@@ -1,12 +1,18 @@
 package com.example.springdemojpa.course;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity(name="course")
 public class Course {
 
+    @Id
     private long id;
-
+    @Column(name="name")
     private String name;
-
+    @Column(name ="author")  // the name needed if we want to map for a different column
     private String author;
 
     public Course(){
