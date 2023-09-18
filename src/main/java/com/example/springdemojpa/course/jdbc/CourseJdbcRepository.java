@@ -2,6 +2,7 @@ package com.example.springdemojpa.course.jdbc;
 
 import com.example.springdemojpa.course.Course;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -24,12 +25,20 @@ public class CourseJdbcRepository {
                     delete from course where id = ?;
                     """;
 
+    String selectQuery = """
+            select * from course where id = ?;
+            """;
+
     public void insert(Course course){
         springJdbcTemplate.update(insertQuery,course.getId(),course.getName(),course.getAuthor());
     }
 
     public void deleteById(long id){
         springJdbcTemplate.update(deleteQuery,id);
+    }
+
+    public Course selectQuery(long id){
+       return  springJdbcTemplate.queryForObject(selectQuery,new BeanPropertyRowMapper<>(Course.class),id);
     }
 
 }
