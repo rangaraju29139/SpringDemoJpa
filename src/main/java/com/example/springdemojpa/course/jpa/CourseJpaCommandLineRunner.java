@@ -23,12 +23,16 @@ public class CourseJpaCommandLineRunner implements CommandLineRunner {
 //        repository.deleteById(1);
 //
 //        System.out.println(repository.findById(2));
-        repository.save(new Course(1,"learn Aws jpa","in28Minutes"));
-        repository.save(new Course(2,"learn Aws jpa","in28Minutes"));
+        repository.save(new Course(1,"learn Aws jpa","rangaraju"));
+        repository.save(new Course(2,"learn Aws jpa","rangaraju"));
         repository.deleteById(1L);
 
         System.out.println(repository.findById(2L));
 
+        System.out.println(repository.findAll());
+        System.out.println(repository.count());
+        System.out.println(repository.findByAuthor("rangaraju"));
+        System.out.println(repository.findByName("learn Aws jpa"));
 
 
 
